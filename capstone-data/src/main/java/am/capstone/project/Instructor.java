@@ -23,6 +23,6 @@ public class Instructor {
     private String state;
     private String zip;
 
-    @OneToMany(mappedBy = "courses")
+    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Course> coursesAssigned;
 }

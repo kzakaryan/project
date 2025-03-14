@@ -1,9 +1,9 @@
 package am.capstone.project;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Setter
@@ -12,7 +12,9 @@ import java.util.Set;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long studentId;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -23,8 +25,13 @@ public class Student {
     private String state;
     private String zip;
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Course> coursesEnrolled;
+    @ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> coursesEnrolled = new HashSet<>();
 
     private int credits;
 
