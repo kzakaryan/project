@@ -4,7 +4,7 @@
     <parent>
         <groupId>am.capstone</groupId>
         <artifactId>project</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>capstone-web</artifactId>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>am.capstone</groupId>
             <artifactId>capstone-data</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

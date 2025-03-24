@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>am.capstone</groupId>
 	<artifactId>project</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>project</name>
 	<description>project</description>
@@ -26,7 +26,7 @@
 	</modules>
 	<scm>
 		<developerConnection>scm:git:git@github.com:kzakaryan/project.git</developerConnection>
-		<tag>project-0.0.2</tag>
+		<tag>project-0.0.1</tag>
 	</scm>
 	<properties>
 		<java.version>23</java.version>
