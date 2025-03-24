@@ -25,10 +25,8 @@
 		<module>capstone-web</module>
 	</modules>
 	<scm>
-		<connection></connection>
 		<developerConnection>scm:git:git@github.com:kzakaryan/project.git</developerConnection>
 		<tag>project-0.0.1</tag>
-		<url></url>
 	</scm>
 	<properties>
 		<java.version>23</java.version>
