@@ -1,4 +1,4 @@
-package am.capstone.project;
+package am.capstone.project.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,14 +7,14 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Entity
-public class Faculty {
+public class Administrator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long facultyId;
+    private Long adminId;
     private String firstName;
     private String lastName;
     private String email;

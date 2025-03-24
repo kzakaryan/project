@@ -1,4 +1,4 @@
-package am.capstone.project;
+package am.capstone.project.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
