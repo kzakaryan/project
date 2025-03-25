@@ -3,11 +3,6 @@ package am.capstone.project.service;
 import am.capstone.project.model.Faculty;
 import java.util.Set;
 
-public interface FacultyService {
+public interface FacultyService extends CrudService<Faculty, Long> {
 
-    Faculty save(Faculty faculty);
-
-    Set<Faculty> findAll();
-
-    Faculty findById(Long id);
 }
