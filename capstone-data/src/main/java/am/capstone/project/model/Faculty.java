@@ -1,20 +1,14 @@
 package am.capstone.project.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
-public class Faculty {
+public class Faculty extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long facultyId;
     private String firstName;
     private String lastName;
     private String email;
