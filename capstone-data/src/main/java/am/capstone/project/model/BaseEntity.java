@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 @Entity
 public class BaseEntity implements Serializable {
 
