@@ -1,12 +1,10 @@
 package am.capstone.project.service.map;
 
-import am.capstone.project.model.Course;
 import am.capstone.project.model.Faculty;
-import am.capstone.project.service.CrudService;
-
+import am.capstone.project.service.FacultyService;
 import java.util.Set;
 
-public class FacultyServiceMap extends AbstractMapService<Faculty, Long> implements CrudService<Faculty, Long>  {
+public class FacultyServiceMap extends AbstractMapService<Faculty, Long> implements FacultyService {
 
     @Override
     public Set<Faculty> findAll() {
