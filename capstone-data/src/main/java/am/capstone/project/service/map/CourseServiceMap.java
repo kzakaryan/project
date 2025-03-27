@@ -2,8 +2,10 @@ package am.capstone.project.service.map;
 
 import am.capstone.project.model.Course;
 import am.capstone.project.service.CourseService;
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
+@Service
 public class CourseServiceMap extends AbstractMapService<Course, Long> implements CourseService {
 
     @Override

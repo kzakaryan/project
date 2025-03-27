@@ -14,14 +14,12 @@ public class DataLoader implements CommandLineRunner {
     private final FacultyService facultyService;
     private final AdministratorService administratorService;
 
-
-
-    public DataLoader() {
-        this.studentService = new StudentServiceMap();
-        this.courseService = new CourseServiceMap();
-        this.instructorService = new InstructorServiceMap();
-        this.facultyService = new FacultyServiceMap();
-        this.administratorService = new AdministratorServiceMap();
+    public DataLoader(StudentService studentService, CourseService courseService, InstructorService instructorService, FacultyService facultyService, AdministratorService administratorService) {
+        this.studentService = studentService;
+        this.courseService = courseService;
+        this.instructorService = instructorService;
+        this.facultyService = facultyService;
+        this.administratorService = administratorService;
     }
 
     @Override

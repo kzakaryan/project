@@ -2,8 +2,10 @@ package am.capstone.project.service.map;
 
 import am.capstone.project.model.Administrator;
 import am.capstone.project.service.AdministratorService;
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
+@Service
 public class AdministratorServiceMap extends AbstractMapService<Administrator, Long> implements AdministratorService {
 
     @Override
