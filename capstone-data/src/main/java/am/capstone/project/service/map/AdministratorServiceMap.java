@@ -15,7 +15,7 @@ public class AdministratorServiceMap extends AbstractMapService<Administrator, L
 
     @Override
     public Administrator save(Administrator entity) {
-        return super.save(entity.getId(), entity);
+        return super.save(entity);
     }
 
     @Override
