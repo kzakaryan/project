@@ -10,6 +10,11 @@
     <artifactId>capstone-web</artifactId>
 
     <properties>
+        <!-- Web dependencies -->
+        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.14.1</webjars-jquery-ui.version>
+        <webjars-jquery.version>3.7.1</webjars-jquery.version>
+        <wro4j.version>2.1.1</wro4j.version>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,6 +71,65 @@
             <version>0.0.3-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- webjars -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>${webjars-jquery-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${webjars-bootstrap.version}</version>
+        </dependency>
+        <!-- end of webjars -->
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-maven-plugin</artifactId>
+                <version>${wro4j.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+                    <cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
+                    <wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
+                    <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
+                    <contextFolder>${basedir}/src/main/less</contextFolder>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.webjars</groupId>
+                        <artifactId>bootstrap</artifactId>
+                        <version>${webjars-bootstrap.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.mockito</groupId>
+                        <artifactId>mockito-core</artifactId>
+                        <version>2.23.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
