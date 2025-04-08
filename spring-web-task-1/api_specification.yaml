@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info:
+  title: University Management System
+  description: University Management System OpenAPI Detailed Description
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  
