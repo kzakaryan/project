@@ -1,8 +1,6 @@
 package am.capstone.project.controller;
 
-
 import am.capstone.project.model.Administrator;
-import am.capstone.project.model.Instructor;
 import am.capstone.project.service.AdministratorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
