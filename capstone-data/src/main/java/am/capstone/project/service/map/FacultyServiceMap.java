@@ -15,7 +15,7 @@ public class FacultyServiceMap extends AbstractMapService<Faculty, Long> impleme
 
     @Override
     public Faculty save(Faculty entity) {
-        return super.save(entity.getId(), entity);
+        return super.save(entity);
     }
 
     @Override

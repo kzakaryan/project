@@ -15,7 +15,7 @@ public class CourseServiceMap extends AbstractMapService<Course, Long> implement
 
     @Override
     public Course save(Course entity) {
-        return super.save(entity.getId(), entity);
+        return super.save(entity);
     }
 
     @Override

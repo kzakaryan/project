@@ -1,0 +1,339 @@
+openapi: 3.1.0
+info:
+  title: University Management System
+  description: University Management System OpenAPI Detailed Description
+  termsOfService: http://example.com/terms/
+  contact:
+    name: Khachik Z.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://dev.example.com
+    description: Development Server
+  - url: https://qa.example.com
+    description: QA Server
+  - url: https://prod.example.com
+    description: Production Server
+security:
+  - BasicAuth: []
+  - JwtAuthToken: []
+paths:
+  /api/administrators:
+    get:
+      tags:
+        - Administrators
+      summary: List Administrators
+      description: Get a list of all Administrators
+      operationId: listAdminsV1
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page Number
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Page Size
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 25
+      responses:
+        200:
+          description: List of Administrators
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdministratorPagedList'
+      security: []
+    post:
+      tags:
+        - Administrators
+      summary: New Administrator
+      description: Create a new Administrator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+        required: true
+      responses:
+        201:
+          description: Administrator Created
+          headers:
+            Location:
+              description: Location of the created Administrator
+              schema:
+                type: string
+                format: uri
+        400:
+          description: Bad Request
+        409:
+          description: Conflict
+  /api/administrators/{id}:
+    get:
+      tags:
+        - Administrators
+      summary: Get Administrator by Id
+      description: Get a single Administrator by Id
+      operationId: getAdminByIdV1
+      parameters:
+        - name: id
+          in: path
+          description: Administrator Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Found Administrator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator'
+        404:
+          description: Not Found
+      security: []
+  /api/courses:
+    get:
+      tags:
+        - Courses
+      summary: List of Courses
+      description: Get a list of all Courses
+      operationId: listStudentsV1
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page Number
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Page Size
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 25
+      responses:
+        200:
+          description: List of Courses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoursePagedList'
+      security: []
+
+    post:
+      tags:
+        - Courses
+      summary: New Course
+      description: Create a new Course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Courses'
+        required: true
+      responses:
+        201:
+          description: Course Created
+          headers:
+            Location:
+              description: Location of the created Course
+              schema:
+                type: string
+                format: uri
+        400:
+          description: Bad Request
+        409:
+          description: Conflict
+  /api/courses/{id}:
+    get:
+      tags:
+        - Courses
+      summary: Get Course by Id
+      description: Get a single course by Id
+      parameters:
+        - name: id
+          in: path
+          description: Course Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Found Course
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Courses'
+        404:
+          description: Not Found
+      security: []
+
+components:
+  schemas:
+    Courses:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        instructor:
+          type: object
+        credits:
+          type: int32
+        capacity:
+          type: int32
+
+    Administrator:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+    CourseList:
+      maxItems: 500
+      minItems: 1
+      type: array
+      description: List of Students
+      items:
+        $ref: '#/components/schemas/Courses'
+
+    CoursePagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/CourseList'
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+
+
+    AdministratorList:
+      maxItems: 100
+      minItems: 1
+      type: array
+      description: List of Administrators
+      items:
+        $ref: '#/components/schemas/Administrator'
+
+    AdministratorPagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/AdministratorList'
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+
+    PagedResponse:
+      type: object
+      properties:
+        pageable:
+          $ref: '#/components/schemas/PagedResponse_pageable'
+        totalPages:
+          type: integer
+          format: int32
+        last:
+          type: boolean
+        totalElements:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        number:
+          type: integer
+          format: int32
+        numberOfElements:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        first:
+          type: boolean
+    PagedResponse_pageable_sort:
+      type: object
+      properties:
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+    PagedResponse_pageable:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        offset:
+          type: integer
+          format: int32
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        paged:
+          type: boolean
+        unpaged:
+          type: boolean
+      parameters:
+    PageNumberParam:
+      name: pageNumber
+      in: query
+      description: Page Number
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 1
+    PageSizeParam:
+      name: pageSize
+      in: query
+      description: Page Size
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 25
+    securitySchemes:
+      BasicAuth:
+        type: http
+        scheme: basic
+      JwtAuthToken:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT

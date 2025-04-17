@@ -14,7 +14,7 @@ public class InstructorServiceMap extends AbstractMapService<Instructor, Long> i
 
     @Override
     public Instructor save(Instructor entity) {
-        return super.save(entity.getId(), entity);
+        return super.save(entity);
     }
 
     @Override

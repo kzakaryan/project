@@ -14,7 +14,7 @@ public class StudentServiceMap extends AbstractMapService<Student, Long> impleme
 
     @Override
     public Student save(Student entity) {
-        return super.save(entity.getId(), entity);
+        return super.save(entity);
     }
 
     @Override
