@@ -1,10 +1,12 @@
 package am.capstone.project.service.map;
 
 import am.capstone.project.model.Course;
-import am.capstone.project.service.CrudService;
+import am.capstone.project.service.CourseService;
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
-public class CourseServiceMap extends AbstractMapService<Course, Long> implements CrudService<Course, Long> {
+@Service
+public class CourseServiceMap extends AbstractMapService<Course, Long> implements CourseService {
 
     @Override
     public Set<Course> findAll() {
@@ -29,5 +31,10 @@ public class CourseServiceMap extends AbstractMapService<Course, Long> implement
     @Override
     public void delete(Course entity) {
         super.delete(entity);
+    }
+
+    @Override
+    public Course findByName(String name) {
+        return null;
     }
 }

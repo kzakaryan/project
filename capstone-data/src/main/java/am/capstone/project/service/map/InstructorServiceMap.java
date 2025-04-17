@@ -1,10 +1,12 @@
 package am.capstone.project.service.map;
 
 import am.capstone.project.model.Instructor;
-import am.capstone.project.service.CrudService;
+import am.capstone.project.service.InstructorService;
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
-public class InstructorServiceMap extends AbstractMapService<Instructor, Long> implements CrudService<Instructor, Long> {
+@Service
+public class InstructorServiceMap extends AbstractMapService<Instructor, Long> implements InstructorService {
     @Override
     public Set<Instructor> findAll() {
         return super.findAll();
