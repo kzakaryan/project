@@ -3,6 +3,8 @@ package am.capstone.project.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
@@ -21,5 +23,7 @@ public class Instructor extends BaseEntity {
     private String zip;
 
     @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<Course> coursesAssigned;
 }
