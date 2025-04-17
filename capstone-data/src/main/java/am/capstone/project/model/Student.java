@@ -1,19 +1,14 @@
-package am.capstone.project;
+package am.capstone.project.model;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import java.util.HashSet;
 import java.util.Set;
 
-@Setter
-@Getter
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long studentId;
+public class Student extends BaseEntity {
 
     private String firstName;
     private String lastName;

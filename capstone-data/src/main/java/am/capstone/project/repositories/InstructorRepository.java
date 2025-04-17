@@ -1,6 +1,6 @@
 package am.capstone.project.repositories;
 
-import am.capstone.project.Instructor;
+import am.capstone.project.model.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
