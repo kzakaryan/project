@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List Of Instructors</title>
+</head>
+<body>
+<h1 th:text="'List Of Instructors'">List of Instructors...</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="instructor : ${instructors}">
+    <td th:text="${instructor?.getId()}"></td>
+    <td th:text="${instructor?.firstName}"></td>
+    <td th:text="${instructor?.lastName}"></td>
+    <td th:text="${instructor?.getEmail()}"></td>
+    <td th:text="${instructor?.getPhone()}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
